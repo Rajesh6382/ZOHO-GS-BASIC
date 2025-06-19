@@ -215,3 +215,52 @@ class NumberToWords {
     }
 }
 
+
+class NumberToWord {
+    
+    static String[] ones = {
+        "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+        "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen",
+        "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+    };
+
+    static String[] tens = {
+        "", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"
+    };
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number (0 - 999): ");
+        int num = sc.nextInt();
+
+        if (num < 0 || num > 999) {
+            System.out.println("Number out of range!");
+        } else if (num == 0) {
+            System.out.println("Zero");
+        } else {
+            System.out.println(convertToWords(num));
+        }
+    }
+
+    static String convertToWords(int num) {
+        StringBuilder sb = new StringBuilder();
+
+        if (num >= 100) {
+            sb.append(ones[num / 100]).append(" Hundred");
+            num %= 100;
+            if (num != 0) sb.append(" and ");
+        }
+
+        if (num >= 20) {
+            sb.append(tens[num / 10]).append(" ");
+            num %= 10;
+        }
+
+        if (num > 0) {
+            sb.append(ones[num]);
+        }
+
+        return sb.toString().trim();
+    }
+}
+
