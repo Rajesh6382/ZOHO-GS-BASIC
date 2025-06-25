@@ -264,3 +264,28 @@ class NumberToWord {
     }
 }
 
+
+//leetcode sum no : 1800
+class sol{
+    public static void main(String[] args) {
+        int [] arr = {12,17,15,13,10,11,12};
+        int max=0;
+        int start=0;
+        int end=0;
+        int sum=0;
+        while(end<arr.length){
+            if(arr[start]<=arr[end]){
+                sum = sum+arr[end];
+                end++;
+            }else{
+                start=end;
+                sum=0;
+            }
+            if(max<sum){
+                max=sum;
+            }
+        }
+        System.out.println(max);
+    }
+}
+
